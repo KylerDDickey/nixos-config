@@ -14,6 +14,7 @@
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
+        ./nvim
         ./configuration.nix
         inputs.home-manager.nixosModules.default
       ];

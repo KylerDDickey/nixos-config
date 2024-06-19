@@ -57,6 +57,11 @@
       recursive = true;
     };
 
+    "./nvim/ftplugin" = {
+      source = ./nvim/ftplugin;
+      recursive = true;
+    };
+
     "./nvim/init.lua" = {
       source = ./nvim/init.lua;
     };
