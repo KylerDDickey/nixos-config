@@ -5,12 +5,8 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/home-manager/kde-desktop-environment.nix
-    ../../modules/home-manager/networking.nix
-    inputs.home-manager.nixosModules.default
-  ];
+  imports =
+    [ ./hardware-configuration.nix inputs.home-manager.nixosModules.default ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -19,7 +15,8 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -37,7 +34,14 @@
   # };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "startplasma-x11";
+  services.xrdp.openFirewall = true;
+  services.xrdp.audio.enable = true;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -62,7 +66,6 @@
       alacritty
       discord
       firefox
-      neovim
       obsidian
       parsec-bin
       tree

@@ -1,11 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ gcc nixfmt ];
+  home.packages = with pkgs; [ gcc nixd nixfmt-rfc-style ];
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;
+    package = pkgs.neovim-unwrapped;
     vimAlias = true;
     coc.enable = false;
     withNodeJs = true;

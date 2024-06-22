@@ -29,7 +29,11 @@
     # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # fonts?
     (pkgs.nerdfonts.override {
-      fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];
+      fonts = [
+        "FiraCode"
+        "DroidSansMono"
+        "JetBrainsMono"
+      ];
     })
 
     # # You can also create simple shell scripts directly inside your
@@ -62,7 +66,7 @@
         dynamic_padding = true
 
         [font]
-        size = 6
+        size = 11
 
         [font.bold]
         family = "JetBrainsMono Nerd Font Mono"
