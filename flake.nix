@@ -11,11 +11,10 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.personal-laptop = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
-        ./nvim
-        ./configuration.nix
+        ./hosts/personal-laptop/configuration.nix
         inputs.home-manager.nixosModules.default
       ];
     };

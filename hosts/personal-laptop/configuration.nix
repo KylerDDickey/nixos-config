@@ -5,21 +5,17 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./kde-desktop-environment.nix
-      ./networking.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/home-manager/kde-desktop-environment.nix
+    ../../modules/home-manager/networking.nix
+    ../../modules/home-manager/neovim
+    inputs.home-manager.nixosModules.default
+  ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/nvme0n1"; # or "nodev" for efi only
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -27,7 +23,7 @@
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "America/Chicago";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -43,9 +39,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -82,9 +75,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = {
-      "kyler" = import ./home.nix;
-    };
+    users = { "kyler" = import ./home.nix; };
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -92,9 +83,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
   environment.systemPackages = with pkgs; [
     git
     networkmanager
