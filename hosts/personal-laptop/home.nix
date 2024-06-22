@@ -29,15 +29,8 @@
     # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # fonts?
     (pkgs.nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "DroidSansMono"
-        "JetBrainsMono"
-      ];
+      fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];
     })
-    pkgs.nixd
-    pkgs.gcc
-    pkgs.nixfmt
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -88,20 +81,6 @@
         style = "Regular"
       '';
     };
-
-    "./nvim/lua" = {
-      source = ./nvim/lua;
-      recursive = true;
-    };
-
-    "./nvim/ftplugin" = {
-      source = ./nvim/ftplugin;
-      recursive = true;
-    };
-
-    "./nvim/init.lua" = {
-      source = ./nvim/init.lua;
-    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -120,9 +99,9 @@
   #
   #  /etc/profiles/per-user/kyler/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables = { };
+
+  imports = [ ../../modules/home-manager/neovim ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -9,7 +9,6 @@
     ./hardware-configuration.nix
     ../../modules/home-manager/kde-desktop-environment.nix
     ../../modules/home-manager/networking.nix
-    ../../modules/home-manager/neovim
     inputs.home-manager.nixosModules.default
   ];
 
