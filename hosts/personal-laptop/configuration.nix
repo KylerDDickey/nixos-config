@@ -1,12 +1,19 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ ./hardware-configuration.nix inputs.home-manager.nixosModules.default ];
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -15,8 +22,7 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -63,30 +69,36 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      alacritty
       discord
+      chromium
       firefox
       obsidian
       parsec-bin
-      tree
-      tmux
       vlc
       wgnord
     ];
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = { "kyler" = import ./home.nix; };
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
+    users = {
+      "kyler" = import ./home.nix;
+    };
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
   environment.systemPackages = with pkgs; [
+    tree
     git
     networkmanager
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
