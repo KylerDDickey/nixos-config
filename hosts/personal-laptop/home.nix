@@ -19,7 +19,6 @@
   };
 
   home.packages = with pkgs; [
-    direnv
     (nerdfonts.override {
       fonts = [
         "FiraCode"
@@ -49,6 +48,7 @@
 
   imports = [
     ../../modules/home-manager/alacritty
+    ../../modules/home-manager/bash
     ../../modules/home-manager/neovim
     ../../modules/home-manager/tmux
   ];
