@@ -51,6 +51,7 @@
     ../../modules/home-manager/bash
     ../../modules/home-manager/neovim
     ../../modules/home-manager/tmux
+    ../../modules/home-manager/zsh
   ];
 
   # Let Home Manager install and manage itself.
