@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.oh-my-posh ];
+  home.packages = with pkgs; [
+    direnv
+    fzf
+    oh-my-posh
+  ];
 
   home.file = {
     ".zshrc" = {
