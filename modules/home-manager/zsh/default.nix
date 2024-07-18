@@ -10,8 +10,8 @@
     ".zshrc" = {
       source = ./.zshrc;
     };
-    "theme.omp.json" = {
-      source = ./theme.omp.json;
+    ".zsh-theme.omp.json" = {
+      source = ./.zsh-theme.omp.json;
     };
   };
 }

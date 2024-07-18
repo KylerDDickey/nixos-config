@@ -4,7 +4,7 @@
 # prompt to render correctly, this needs to be as close to the top as possible.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-eval "$(oh-my-posh init zsh --config ~/theme.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.zsh-theme.omp.json)"
 
 ### --- ZINIT (PLUGINS)
 
