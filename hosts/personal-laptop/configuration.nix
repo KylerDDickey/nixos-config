@@ -73,9 +73,11 @@
       chromium
       firefox
       obsidian
+      openresolv
       parsec-bin
       vlc
       wgnord
+      wireguard-tools
     ];
     shell = pkgs.zsh;
   };
