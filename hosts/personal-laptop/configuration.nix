@@ -13,14 +13,6 @@
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    (
-      builtins.fetchGit {
-        url = "https://github.com/cornerman/shadow-nix";
-        ref = "refs/tags/v2.0.2";
-        rev = "426affb76b29d872447ff1fdb34728023e475535";
-      }
-      + "/import/home-manager.nix"
-    )
   ];
 
   # Use the systemd-boot EFI boot loader.

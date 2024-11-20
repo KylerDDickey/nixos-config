@@ -50,7 +50,6 @@
     ../../modules/home-manager/alacritty
     ../../modules/home-manager/bash
     ../../modules/home-manager/neovim
-    ../../modules/home-manager/shadow
     ../../modules/home-manager/tmux
     ../../modules/home-manager/zsh
   ];
