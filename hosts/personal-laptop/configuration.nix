@@ -60,6 +60,17 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Hardware drivers
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-media-driver
+    ];
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -99,10 +110,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
   nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
   environment.systemPackages = with pkgs; [
     tree
     git
+    libva-utils
+    libvdpau
     networkmanager
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -129,7 +145,7 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
+  # This option defines the first version ofsystem NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
   # Most users should NEVER change this value after the initial install, for any reason,

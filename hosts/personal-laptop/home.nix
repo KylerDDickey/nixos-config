@@ -50,11 +50,22 @@
     ../../modules/home-manager/alacritty
     ../../modules/home-manager/bash
     ../../modules/home-manager/neovim
-    ../../modules/home-manager/shadow
+    (
+      fetchGit {
+        url = "https://github.com/cornerman/shadow-nix";
+        ref = "refs/tags/v2.0.0";
+      }
+      + "/import/system.nix"
+    )
     ../../modules/home-manager/tmux
     ../../modules/home-manager/zsh
   ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.shadow-client = {
+    # Enabled by default when using import
+    # enable = true;
+    channel = "prod";
+  };
 }
