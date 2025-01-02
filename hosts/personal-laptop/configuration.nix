@@ -83,6 +83,7 @@
       discord
       chromium
       firefox
+      gimp
       obsidian
       openresolv
       parsec-bin
