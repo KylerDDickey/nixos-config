@@ -11,7 +11,7 @@ nix-shell -p git
 Then clone this repository:
 
 ```bash
-git clone --recurse-submodules https://github.com/KylerDDickey/nixos-config.git;
+git clone --recurse-submodules https://github.com/KylerDDickey/nixos-config.git
 ```
 
 You can then install this configuration by first entering the nix develop shell:

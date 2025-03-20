@@ -45,12 +45,6 @@
               sudo -- sh -c './scripts/build.sh'
               sudo -k
             }
-
-            update_nixos() {
-              echo "NixOS update requires root permissions."
-              sudo -- sh -c 'rm -f /etc/nixos/flake.lock && ./scripts/build.sh'
-              sudo -k
-            }
           '';
         };
       });
