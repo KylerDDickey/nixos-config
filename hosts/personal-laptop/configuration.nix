@@ -57,11 +57,10 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   # Hardware drivers
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       vaapiIntel
@@ -84,6 +83,7 @@
       chromium
       firefox
       gimp
+      inkscape
       obsidian
       openresolv
       parsec-bin

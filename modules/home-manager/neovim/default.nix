@@ -2,6 +2,7 @@
 let
   treesitterWithGrammars = (
     pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+      p.astro
       p.bash
       p.comment
       p.css
