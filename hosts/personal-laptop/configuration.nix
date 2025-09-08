@@ -4,8 +4,8 @@
 {
   inputs,
   outputs,
-  config,
-  lib,
+  # config,
+  # lib,
   pkgs,
   ...
 }:
@@ -54,7 +54,7 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  # services.prining.enable = true;
 
   # Enable sound.
   hardware.pulseaudio.enable = false;
@@ -79,6 +79,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      # TODO: Move these to home.nix
       discord
       chromium
       firefox

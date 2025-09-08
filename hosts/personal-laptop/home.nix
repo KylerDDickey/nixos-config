@@ -15,7 +15,9 @@
   fonts.fontconfig.enable = true;
 
   nixpkgs = {
-    overlays = [ outputs.overlays.unstable-packages ];
+    overlays = [
+      outputs.overlays.unstable-packages
+    ];
   };
 
   home.packages = with pkgs; [
