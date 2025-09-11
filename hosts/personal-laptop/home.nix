@@ -21,13 +21,9 @@
   };
 
   home.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "DroidSansMono"
-        "JetBrainsMono"
-      ];
-    })
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 
   # Home Manager can also manage your environment variables through
