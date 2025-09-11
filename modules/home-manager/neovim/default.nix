@@ -10,7 +10,9 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.unstable.neovim-unwrapped;
+    # Uncomment this to use a later version than the current NixOS version will allow.
+    # package = pkgs.unstable.neovim-unwrapped;
+    package = pkgs.neovim-unwrapped;
     vimAlias = true;
     coc.enable = false;
     withNodeJs = true;
