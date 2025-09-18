@@ -59,7 +59,7 @@
           #   maintainers = with lib.maintainers; [  ];
           # };
 
-          builder = ./scripts/build.sh;
+          builder = ./scripts/builder.sh;
         });
       });
     };
