@@ -38,15 +38,31 @@
       };
 
       devShells = eachSystem (pkgs: {
-        default = pkgs.mkShell {
-          shellHook = ''
-            build_nixos() {
-              echo "NixOS rebuild requires root permissions."
-              sudo -- sh -c './scripts/build.sh'
-              sudo -k
-            }
+        default = pkgs.stdenv.mkDerivation (finalAttrs: {
+          # pname = "";
+          # version = "";
+          #
+          # src =
+          #
+          # nativeBuildInputs = [
+          #
+          # ];
+          # buildInputs = [
+          #
+          # ];
+          #
+          # meta = {
+          #   description = "";
+          #   homepage = "";
+          #   license = lib.licenses.;
+          #   maintainers = with lib.maintainers; [  ];
+          # };
+          installPhase = ''
+            echo "NixOS rebuild requires root permissions."
+            sudo -- sh -c './scripts/build.sh'
+            sudo -k
           '';
-        };
+        });
       });
     };
 }
