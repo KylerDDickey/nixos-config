@@ -48,9 +48,9 @@
           # nativeBuildInputs = [
           #
           # ];
-          buildInputs = [
-            pkgs.sudo
-          ];
+          # buildInputs = [
+          #
+          # ];
           #
           # meta = {
           #   description = "";
