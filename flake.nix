@@ -37,12 +37,13 @@
         ];
       };
 
-      devShells = eachSystem (pkgs: {
+      packages = eachSystem (pkgs: {
         default = pkgs.stdenv.mkDerivation (finalAttrs: {
+          name = "nixos-kdd";
           # pname = "";
           # version = "";
           #
-          # src =
+          src = "./";
           #
           # nativeBuildInputs = [
           #
