@@ -16,13 +16,11 @@
   outputs =
     {
       self,
-      systems,
       nixpkgs,
       ...
     }@inputs:
     let
       inherit (self) outputs;
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
     in
     {
       overlays = import ./overlays { inherit inputs; };
@@ -36,31 +34,5 @@
           inputs.home-manager.nixosModules.default
         ];
       };
-
-      packages = eachSystem (pkgs: {
-        default = pkgs.stdenv.mkDerivation (finalAttrs: {
-          name = "nixos-kdd";
-          # pname = "";
-          # version = "";
-          #
-          src = "./";
-          #
-          # nativeBuildInputs = [
-          #
-          # ];
-          # buildInputs = [
-          #
-          # ];
-          #
-          # meta = {
-          #   description = "";
-          #   homepage = "";
-          #   license = lib.licenses.;
-          #   maintainers = with lib.maintainers; [  ];
-          # };
-
-          builder = ./scripts/builder.sh;
-        });
-      });
     };
 }
