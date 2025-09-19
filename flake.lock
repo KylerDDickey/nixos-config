@@ -21,6 +21,22 @@
         "type": "github"
       }
     },
+    "neovim-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758205378,
+        "narHash": "sha256-b6+m3Rqp0i10VlVPInBbFNaCKoR8/3SBfzAp/sU+I7s=",
+        "owner": "KylerDDickey",
+        "repo": "nvim",
+        "rev": "ac4825bca3d7315fa3d1dfe1cfebb3d5071164a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "KylerDDickey",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1757408970,
@@ -55,6 +71,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "neovim-config": "neovim-config",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "systems": "systems"

@@ -30,11 +30,7 @@
   };
 
   xdg.configFile = {
-    "./nvim" = pkgs.fetchFromGitHub {
-      owner = "KylerDDickey";
-      repo = "nvim";
-      tag = "main";
-    };
+    "./nvim" = pkgs.neovim-config;
   };
 
   home.sessionVariables = {

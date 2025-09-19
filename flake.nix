@@ -11,6 +11,11 @@
     };
 
     systems.url = "github:nix-systems/default";
+
+    neovim-config = {
+      url = "github:KylerDDickey/nvim";
+      flake = false;
+    };
   };
 
   outputs =
