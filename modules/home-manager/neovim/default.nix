@@ -30,18 +30,10 @@
   };
 
   xdg.configFile = {
-    "./nvim/lua" = {
-      source = ./nvim/lua;
-      recursive = true;
-    };
-
-    "./nvim/ftplugin" = {
-      source = ./nvim/ftplugin;
-      recursive = true;
-    };
-
-    "./nvim/init.lua" = {
-      source = ./nvim/init.lua;
+    "./nvim" = pkgs.fetchFromGitHub {
+      owner = "KylerDDickey";
+      repo = "nvim";
+      tag = "main";
     };
   };
 
