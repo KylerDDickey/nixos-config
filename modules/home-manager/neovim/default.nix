@@ -1,4 +1,11 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
+let
+  nc = inputs.neovim-config;
+
+  lua = "${nc}/lua";
+  ftplugin = "${nc}/ftplugin";
+  init = "${nc}/init.lua";
+in
 {
   home.packages = with pkgs; [
     # General nvim dependencies
@@ -30,7 +37,19 @@
   };
 
   xdg.configFile = {
-    "./nvim" = pkgs.neovim-config;
+    "./nvim/lua" = {
+      source = lua;
+      recursive = true;
+    };
+
+    "./nvim/ftplugin" = {
+      source = ftplugin;
+      recursive = true;
+    };
+
+    "./nvim/init.lua" = {
+      source = init;
+    };
   };
 
   home.sessionVariables = {
