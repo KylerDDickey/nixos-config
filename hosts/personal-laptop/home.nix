@@ -49,6 +49,7 @@
     ../../modules/home-manager/bash
     ../../modules/home-manager/neovim
     ../../modules/home-manager/tmux
+    ../../modules/home-manager/scripts
     ../../modules/home-manager/zsh
   ];
 

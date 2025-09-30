@@ -30,6 +30,10 @@
     {
       overlays = import ./overlays { inherit inputs; };
 
+      meta = {
+        rootPath = "~/git/nixos-config/";
+      };
+
       nixosConfigurations.personalLaptop = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs outputs;

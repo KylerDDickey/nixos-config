@@ -39,16 +39,16 @@
         tmux new-session -s "$SESSION_NAME" -d -x "$NUM_COLS" -y "$NUM_LINES"
 
         # Split the window vertically, make sure the new pane is only N% of the window.
-        tmux split-window -t $SESSION_NAME -v -l "$CMD_WINDOW_PERCENT_SIZE"
+        tmux split-window -t "$SESSION_NAME" -v -l "$CMD_WINDOW_PERCENT_SIZE"
 
         # Move cursor back to the nvim terminal.
-        tmux last-pane -t $SESSION_NAME
+        tmux last-pane -t "$SESSION_NAME"
 
         # Send the nvim command to the first pane of the 'dev' session.
-        tmux send-keys -t $SESSION_NAME "nvim" C-m
+        tmux send-keys -t "$SESSION_NAME" "nvim" C-m
 
         # Attach to the tmux session.
-        tmux attach-session -t $SESSION_NAME
+        tmux attach-session -t "$SESSION_NAME"
       '';
     })
   ];
