@@ -28,11 +28,9 @@
       inherit (self) outputs;
     in
     {
-      overlays = import ./overlays { inherit inputs; };
+      meta = import ./meta { };
 
-      meta = {
-        rootPath = "~/git/nixos-config/";
-      };
+      overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations.personalLaptop = nixpkgs.lib.nixosSystem {
         specialArgs = {

@@ -1,16 +1,16 @@
-{ outputs, pkgs, ... }:
+{ pkgs, ... }@inputs:
 let
-  app = pkgs.writeShellApplication;
+  writeApps = i: map ({ value, ... }: value) (pkgs.lib.attrsToList (import i inputs));
 
-  sysconf-nix-channels-update = app {
-    name = "sysconf-nix-channels-update";
-    text = ''
-      nix flake update --flake ${outputs.meta.rootPath};
-    '';
+  apps = {
+    sysconf-nix = writeApps ./sysconf-nixos;
   };
 in
 {
-  home.packages = [
-    sysconf-nix-channels-update
-  ];
+  home.packages = pkgs.lib.lists.flatten (
+    with apps;
+    [
+      sysconf-nix
+    ]
+  );
 }
