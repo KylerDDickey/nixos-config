@@ -91,7 +91,6 @@
       vlc
       wgnord
       wireguard-tools
-      zoom-us
     ];
     shell = pkgs.zsh;
   };
