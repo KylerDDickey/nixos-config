@@ -17,6 +17,7 @@ in
     stylua
     nixd
     nixfmt-rfc-style
+    vale
 
     # Ensure Mason dependencies are installed.
     # git -- Usually ignore, should already be installed
