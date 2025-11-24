@@ -57,7 +57,7 @@
   # services.prining.enable = true;
 
   # Enable sound.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Hardware drivers
   hardware.graphics = {

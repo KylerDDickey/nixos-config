@@ -42,12 +42,13 @@ in
     name = "sysconf-nixos-rebuild-switch";
     runtimeInputs = with pkgs; [
       coreutils
+      nixos-rebuild
     ];
     text = ''
-      HOST=${selectedHost}
-
       rebuild () {
-        nixos-rebuild switch --flake ${rootPath}\#$HOST
+        HOST=${selectedHost}
+        FLAKE=${rootPath}\#$HOST
+        nixos-rebuild switch --flake $FLAKE
       }
 
       echo "Rebuilding requires elevated permissions."
